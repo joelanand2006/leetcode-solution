@@ -1,0 +1,19 @@
+// Last updated: 2/4/2026, 8:20:37 PM
+class Solution {
+    public int[] nextGreaterElements(int[] nums) {
+        int n=nums.length;
+        Stack<Integer> s=new Stack();
+        int[] res =new int[n];
+        Arrays.fill(res,-1);
+        for(int i=0;i<n*2;i++){
+            int x= nums[i%n];
+            while(!s.empty()&& x> nums[s.peek()]){
+                res[s.peek()]=x;
+                s.pop();
+            }
+            s.push(i%n);
+        }
+        return res;
+    }
+
+}
